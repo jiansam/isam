@@ -7,8 +7,6 @@ import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,20 +21,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.google.gson.Gson;
-import com.isam.bean.CommonItemList;
-import com.isam.bean.Interviewone;
 import com.isam.bean.InterviewoneCompany;
 import com.isam.bean.InterviewoneFile;
-import com.isam.bean.InterviewoneYear;
 import com.isam.helper.DataUtil;
-import com.isam.service.CommonItemListService;
 import com.isam.service.InterviewoneFileService;
 import com.isam.service.InterviewoneHelp;
 import com.isam.service.InterviewoneService;
 import com.isam.service.MoeaicDataService;
-
-import sun.nio.cs.ArrayEncoder;
 
 public class InterviewoneDownloadByYearServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

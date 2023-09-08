@@ -33,6 +33,16 @@
 			</tr>
 			
 			<tr>
+				<td class="colheader">※企業類別</td>
+				<td>
+					<input type="checkbox" name="type1" <%= interviewbrief.getType1() == "1" ? "checked='checked'" :""%> >僑外資在臺事業 &nbsp;  
+					<input type="checkbox" name="type2" <%= interviewbrief.getType2() == "1" ? "checked='checked'" :""%> >台元科技園區 &nbsp;
+					<input type="checkbox" name="type3" <%= interviewbrief.getType2() == "1" ? "checked='checked'" :""%> >陸資在臺辦事處
+				</td>
+			</tr>
+			
+			 
+			<tr>
 				<td class="colheader">企業名稱</td>
 				<td><input type="text" name="company" size="100" value="<%= DataUtil.trim(interviewbrief.getCompany()) %>"></td>
 			</tr>

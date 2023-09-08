@@ -24,7 +24,7 @@
 					<th>NO.</th>
 					<th>年度</th>
 					<th>訪查企業名稱</th>
-					<th>修改人</th>
+					<th>企業類別</th>
 					<th>修改時間</th>
 				</tr>
 			</thead>
@@ -48,7 +48,11 @@
 				<%= DataUtil.trim(interviewbrief.getCompany()).length() == 0 ? "(未輸入名稱)" : interviewbrief.getCompany() %>
 			 </a>
 		</td>
-		<td><%=  interviewbrief.getUpdateuser() %></td>
+		<td>
+			<%=  (interviewbrief.getType1() == "1" ? "僑外資在臺事業<br>":"") %>
+			<%=  (interviewbrief.getType2() == "1" ? "台元科技園區<br>":"") %>
+			<%=  (interviewbrief.getType3() == "1" ? "陸資在臺辦事處":"") %>
+		</td>
 		<td><%=  cal.get(Calendar.YEAR) - 1911 %>/<%=  cal.get(Calendar.MONTH) + 1 %>/<%=  cal.get(Calendar.DAY_OF_MONTH) %></td>
 	</tr>
 <%
