@@ -1,0 +1,31 @@
+USE [ISAM]
+GO
+
+/****** Object:  UserDefinedFunction [dbo].[OFI_GETALL_Audit]    Script Date: 2020/12/23 上午 06:32:15 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE    FUNCTION [dbo].[OFI_GETALL_InverviewOne]()   
+RETURNS
+@ResultTable TABLE
+(
+      	investNo nvarchar(6),
+      	[year] nvarchar(3),
+      	[status] nvarchar(1) 	
+		
+)
+BEGIN 
+INSERT @ResultTable 
+select t1.investNo,t1.[year], case when interviewStatus=1 and [enable]=1 then 'O' else '' end 'status'
+	from		 Interviewone t1 
+		
+		
+	
+ 	RETURN
+ 	END
+GO
+

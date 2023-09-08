@@ -1,0 +1,1502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  	<display-name>isam</display-name>
+  	
+  	<welcome-file-list>
+		<welcome-file>isam.jsp</welcome-file>
+	</welcome-file-list>
+  	
+  	<resource-ref>
+	    <res-ref-name>jdbc/sqlISAM</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	    <res-sharing-scope>Unshareable</res-sharing-scope>
+  	</resource-ref>
+  <!-- 	<resource-ref>
+	    <res-ref-name>jdbc/sqlCIER</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	    <res-sharing-scope>Unshareable</res-sharing-scope>
+  	</resource-ref> -->
+	<resource-ref>
+	    <res-ref-name>jdbc/sqlChinaDB</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	    <res-sharing-scope>Unshareable</res-sharing-scope>
+  	</resource-ref>
+	<resource-ref>
+	    <res-ref-name>jdbc/sqlMoeaic</res-ref-name>
+	    <res-type>javax.sql.DataSource</res-type>
+	    <res-auth>Container</res-auth>
+	    <res-sharing-scope>Unshareable</res-sharing-scope>
+  	</resource-ref>
+  	<error-page>
+  		<error-code>404</error-code>
+  		<location>/error/</location>
+  	</error-page>
+  	<filter>
+  		<filter-name>CommonFilter</filter-name>
+  		<filter-class>com.isam.helper.CommonFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+		<filter-name>CommonFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	<filter>
+  		<filter-name>LoginCheckFilter</filter-name>
+  		<filter-class>com.isam.helper.LoginCheckFilter</filter-class>
+		<init-param>
+			<param-name>loginCheck</param-name>
+			<param-value>/isamCheck.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>login</param-name>
+			<param-value>/isam.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>logout</param-name>
+			<param-value>/logout.jsp</param-value>
+		</init-param>
+  	</filter>
+  	<filter-mapping>
+		<filter-name>LoginCheckFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+  	<filter>
+  		<filter-name>SuperUserCheckFilter</filter-name>
+  		<filter-class>com.isam.helper.SuperUserCheckFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+		<filter-name>SuperUserCheckFilter</filter-name>
+		<url-pattern>/console/admin/*</url-pattern>
+  	</filter-mapping>
+  	<filter>
+  		<filter-name>SurveyHelperFilter</filter-name>
+  		<filter-class>com.isam.helper.SurveyHelperFilter</filter-class>
+  	</filter>
+  	<filter-mapping>
+		<filter-name>SurveyHelperFilter</filter-name>
+		<url-pattern>/survey/*</url-pattern>
+  	</filter-mapping>
+  	
+	
+	
+  	
+	<servlet>
+		<servlet-name>LoginCheckServlet</servlet-name>
+		<servlet-class>com.isam.servlet.LoginCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginCheckServlet</servlet-name>
+		<url-pattern>/isamCheck.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<servlet-class>com.isam.servlet.LoginOutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginOutServlet</servlet-name>
+		<url-pattern>/logout.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ChangePWDServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ChangePWDServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChangePWDServlet</servlet-name>
+		<url-pattern>/changePwd.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>UserListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.UserListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UserListServlet</servlet-name>
+		<url-pattern>/userlist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetEditUserServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetEditUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetEditUserServlet</servlet-name>
+		<url-pattern>/getedituser.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>EditUserServlet</servlet-name>
+		<servlet-class>com.isam.servlet.EditUserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>EditUserServlet</servlet-name>
+		<url-pattern>/edituser.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SurveyShowTopicServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyShowTopicServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyShowTopicServlet</servlet-name>
+		<url-pattern>/survey/showsurveyitem.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SurveyShowHTMLServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyShowHTMLServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyShowHTMLServlet</servlet-name>
+		<url-pattern>/survey/showsurvayhtml.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SurveyExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyExcelServlet</servlet-name>
+		<url-pattern>/survey/downloadsurvay.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectShowListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectShowListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectShowListServlet</servlet-name>
+		<url-pattern>/console/project/showproject.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectChangeStateServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectChangeStateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectChangeStateServlet</servlet-name>
+		<url-pattern>/console/project/changestate.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectShowDetailServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectShowDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectShowDetailServlet</servlet-name>
+		<url-pattern>/console/project/showprojectdetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectUpdateServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectUpdateServlet</servlet-name>
+		<url-pattern>/console/project/updateprojectdetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>MoneyDifferDownloadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.MoneyDifferDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MoneyDifferDownloadServlet</servlet-name>
+		<url-pattern>/console/project/downloaddiffer.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetReceiveNoListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetReceiveNoListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetReceiveNoListServlet</servlet-name>
+		<url-pattern>/console/project/getprojectreceive.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetInvestNoNameServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetInvestNoNameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetInvestNoNameServlet</servlet-name>
+		<url-pattern>/console/project/getinvestNoName.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetProjectReportPivotServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetProjectReportPivotServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetProjectReportPivotServlet</servlet-name>
+		<url-pattern>/getprpivot.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetCommitReportPivotServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetCommitReportPivotServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCommitReportPivotServlet</servlet-name>
+		<url-pattern>/getcommitpivot.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectReportEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectReportEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectReportEditServlet</servlet-name>
+		<url-pattern>/console/project/projectreportedit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ProjectShowReportServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectShowReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectShowReportServlet</servlet-name>
+		<url-pattern>/console/project/updatepr.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetMoeaicByInvestNo</servlet-name>
+		<servlet-class>com.isam.servlet.GetMoeaicByInvestNo</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetMoeaicByInvestNo</servlet-name>
+		<url-pattern>/console/project/getmdbyinvestno.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitShowListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitShowListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitShowListServlet</servlet-name>
+		<url-pattern>/console/commit/showcommit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitShowDetailServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitShowDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitShowDetailServlet</servlet-name>
+		<url-pattern>/console/commit/showcommitdetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitAddInvestorServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitAddInvestorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitAddInvestorServlet</servlet-name>
+		<url-pattern>/console/commit/addcommitinvestor.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitUpdateInvestorServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitUpdateInvestorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitUpdateInvestorServlet</servlet-name>
+		<url-pattern>/console/commit/updatecommitdetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitEditContactServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitEditContactServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitEditContactServlet</servlet-name>
+		<url-pattern>/console/commit/editcommitcontact.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitEditTypeServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitEditTypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitEditTypeServlet</servlet-name>
+		<url-pattern>/console/commit/editcommit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitShowEditOServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitShowEditOServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitShowEditOServlet</servlet-name>
+		<url-pattern>/console/commit/commiteditview.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitShowOServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitShowOServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitShowOServlet</servlet-name>
+		<url-pattern>/console/commit/commitviewo.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitDeleteOServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitDeleteOServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitDeleteOServlet</servlet-name>
+		<url-pattern>/console/commit/commitdelete.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitShowAddReportServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitShowAddReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitShowAddReportServlet</servlet-name>
+		<url-pattern>/console/commit/commitaddreport.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitReportEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitReportEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitReportEditServlet</servlet-name>
+		<url-pattern>/console/commit/addcommitreport.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitReportDeleteServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitReportDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitReportDeleteServlet</servlet-name>
+		<url-pattern>/console/commit/commitrpdelete.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SubCommitShowEditOServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SubCommitShowEditOServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubCommitShowEditOServlet</servlet-name>
+		<url-pattern>/console/commit/subcommitedit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SubCommitEditTypeServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SubCommitEditTypeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubCommitEditTypeServlet</servlet-name>
+		<url-pattern>/console/commit/subcommitact.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SubCommitShowAddReportServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SubCommitShowAddReportServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubCommitShowAddReportServlet</servlet-name>
+		<url-pattern>/console/commit/showsubcommitreport.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>SubCommitReportEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SubCommitReportEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SubCommitReportEditServlet</servlet-name>
+		<url-pattern>/console/commit/editcommitreport.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommitEditTypeUpdateDetailServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommitEditTypeUpdateDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommitEditTypeUpdateDetailServlet</servlet-name>
+		<url-pattern>/console/commit/updatetypedetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetInvestorListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetInvestorListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetInvestorListServlet</servlet-name>
+		<url-pattern>/console/commit/getinvestors.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetRestrainDataServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetRestrainDataServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetRestrainDataServlet</servlet-name>
+		<url-pattern>/console/commit/getrestraindata.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowListServlet</servlet-name>
+		<url-pattern>/approval/showapproval.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalExcelServlet</servlet-name>
+		<url-pattern>/approval/downloadExcel.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowProjServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowProjServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowProjServlet</servlet-name>
+		<url-pattern>/approval/seeprojct.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowCommitServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowCommitServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowCommitServlet</servlet-name>
+		<url-pattern>/approval/seecommit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowDownloadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowDownloadServlet</servlet-name>
+		<url-pattern>/approval/showdownload.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalDownloadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalDownloadServlet</servlet-name>
+		<url-pattern>/approval/download.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowCommitDetailServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowCommitDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowCommitDetailServlet</servlet-name>
+		<url-pattern>/approval/showocommit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>ApprovalShowOCommitServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowOCommitServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowOCommitServlet</servlet-name>
+		<url-pattern>/approval/showodetail.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+<!-- 	<servlet>
+		<servlet-name>ApprovalShowDetailServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalShowDetailServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalShowDetailServlet</servlet-name>
+		<url-pattern>/approval/seeapproval.jsp</url-pattern>
+	</servlet-mapping> -->
+	
+	
+	<servlet>
+		<servlet-name>ApprovalPDFServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ApprovalPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ApprovalPDFServlet</servlet-name>
+		<url-pattern>/approval/seeapproval.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>DownloadInterviewFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.DownloadInterviewFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewFileServlet</servlet-name>
+		<url-pattern>/console/interviewcier/download.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewFileServlet</servlet-name>
+		<url-pattern>/console/interviewtwo/download.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewFileServlet</servlet-name>
+		<url-pattern>/interviewtwo/download.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- interviewtwo--> 
+	<servlet>
+		<servlet-name>DownloadInterviewListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.interviewtwo.DownloadInterviewListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewListServlet</servlet-name>
+		<url-pattern>/console/interviewtwo/download-interviewlist.jsp</url-pattern>
+		<url-pattern>/interviewtwo/download-interviewlist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- interviewone--> 
+	<servlet>
+		<servlet-name>InterviewoneAllDataExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneAllDataExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneAllDataExcelServlet</servlet-name>
+		<url-pattern>/console/interviewone/getdatareport.jsp</url-pattern>
+		<url-pattern>/interviewone/getdatareport.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>CommonListEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.CommonListEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CommonListEditServlet</servlet-name>
+		<url-pattern>/commonlist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneShowFormServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneShowFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneShowFormServlet</servlet-name>
+		<url-pattern>/console/interviewone/getform.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneUploadListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneUploadListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneUploadListServlet</servlet-name>
+		<url-pattern>/console/interviewone/updateiolist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneShowListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneShowListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneShowListServlet</servlet-name>
+		<url-pattern>/console/interviewone/showiolist.jsp</url-pattern>
+		<url-pattern>/interviewone/showiolist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneDownloadShowListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneDownloadShowListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneDownloadShowListServlet</servlet-name>
+		<url-pattern>/console/interviewone/downloadshowiolist.jsp</url-pattern>
+		<url-pattern>/interviewone/downloadshowiolist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneDownloadByYearServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneDownloadByYearServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneDownloadByYearServlet</servlet-name>
+		<url-pattern>/interviewone/downloadbyyearsearch.jsp</url-pattern>
+	
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InterviewoneDeleteItemServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneDeleteItemServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneDeleteItemServlet</servlet-name>
+		<url-pattern>/console/interviewone/deleteitem.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneEditServlet</servlet-name>
+		<url-pattern>/console/interviewone/edititem.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneListByQNoServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneListByQNoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneListByQNoServlet</servlet-name>
+		<url-pattern>/console/interviewone/listbyqno.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneUploadFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneUploadFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneUploadFileServlet</servlet-name>
+		<url-pattern>/console/interviewone/uploadqfiles.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewonwFileDownloadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewonwFileDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewonwFileDownloadServlet</servlet-name>
+		<url-pattern>/getinterviewonefiles.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewonwFileDeleteServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewonwFileDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewonwFileDeleteServlet</servlet-name>
+		<url-pattern>/console/interviewone/deleteinterviewonefiles.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- ======================================================================== -->
+	<!-- 訪查資料下載Zip -->
+	<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>InterviewoneZipServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneZipServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneZipServlet</servlet-name>
+		<url-pattern>/interviewone/downloadzip</url-pattern>
+	</servlet-mapping>	
+	
+<!-- 	<servlet>
+		<servlet-name>InterviewoneShowFontListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneShowFontListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneShowFontListServlet</servlet-name>
+		<url-pattern>/interviewone/showlist.jsp</url-pattern>
+	</servlet-mapping> -->
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneShowByQNoServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneShowByQNoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneShowByQNoServlet</servlet-name>
+		<url-pattern>/interviewone/listbyqno.jsp</url-pattern>
+		<url-pattern>/console/interviewone/showbyqno.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneShowFollowingByQNoServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneShowFollowingByQNoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneShowFollowingByQNoServlet</servlet-name>
+		<url-pattern>/console/interviewone/showfollowingbyqno.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneListFollowingServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneListFollowingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneListFollowingServlet</servlet-name>
+		<url-pattern>/console/interviewone/showfollowing.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneEditErrMsgServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneEditErrMsgServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneEditErrMsgServlet</servlet-name>
+		<url-pattern>/console/interviewone/editerrmsg.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneEditFollowingServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneEditFollowingServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneEditFollowingServlet</servlet-name>
+		<url-pattern>/console/interviewone/editFollowing.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetMaxdateByQNoServlet</servlet-name>
+		<servlet-class>com.isam.servlet.GetMaxdateByQNoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetMaxdateByQNoServlet</servlet-name>
+		<url-pattern>/console/interviewone/checkFollowing.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>InterviewoneXReinvestmentServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneXReinvestmentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneXReinvestmentServlet</servlet-name>
+		<url-pattern>/console/interviewone/addreinvestment.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- ofi --> 
+	<servlet>
+		<servlet-name>OFIShowApprovalListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowApprovalListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowApprovalListServlet</servlet-name>
+		<url-pattern>/cnfdi/listapproval.jsp</url-pattern>
+		<url-pattern>/console/cnfdi/listapproval.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowApprovalServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowApprovalServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowApprovalServlet</servlet-name>
+		<url-pattern>/showapproval.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowInvestorListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestorListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestorListServlet</servlet-name>
+		<url-pattern>/cnfdi/listinvestor.jsp</url-pattern>
+		<url-pattern>/console/cnfdi/listinvestor.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowInvestorServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestorServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestorServlet</servlet-name>
+		<url-pattern>/showinvestor.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OFIShowInvestOfficeServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestOfficeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestOfficeServlet</servlet-name>
+		<url-pattern>/showinvestoffice.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OFIShowInvestCaseServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestCaseServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestCaseServlet</servlet-name>
+		<url-pattern>/showinvestcase.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowInvestCaseListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestCaseListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestCaseListServlet</servlet-name>
+		<url-pattern>/cnfdi/listinvestcase.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIFinancialExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIFinancialExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIFinancialExcelServlet</servlet-name>
+		<url-pattern>/cnfdi/downloadfinancial.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestorXFileDownloadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorXFileDownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorXFileDownloadServlet</servlet-name>
+		<url-pattern>/downloadStructrual.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestPDFServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestPDFServlet</servlet-name>
+		<url-pattern>/downloadinvestdata.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<!-- OFI console -->
+	<servlet>
+		<servlet-name>OFIInvestXAuditPDFServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXAuditPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXAuditPDFServlet</servlet-name>
+		<url-pattern>/audittopdf.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestorXFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorXFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorXFileServlet</servlet-name>
+		<url-pattern>/console/cnfdi/uploadStructural.jsp</url-pattern>
+	</servlet-mapping>
+
+	
+	<servlet>
+		<servlet-name>OFIShowApprovalFormServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowApprovalFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowApprovalFormServlet</servlet-name>
+		<url-pattern>/console/showinvest.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateinvest.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXAuditEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXAuditEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXAuditEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateaudit.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXAudit02EditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXAudit02EditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXAudit02EditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateaudit02.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OFIInvestXAudit07EditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXAudit07EditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXAudit07EditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateaudit07.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXContactEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXContactEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXContactEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateinvestcontact.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXFinancialEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXFinancialEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXFinancialEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updatefinancial.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXReFinancialEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXReFinancialEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXReFinancialEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updateRxfinancial.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestNoXFinancialPDFServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestNoXFinancialPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestNoXFinancialPDFServlet</servlet-name>
+		<url-pattern>/cnfdi/donwloadfs.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestNoXReFinancialPDFServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestNoXReFinancialPDFServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestNoXReFinancialPDFServlet</servlet-name>
+		<url-pattern>/cnfdi/donwloadrxfs.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowInvestorFormServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowInvestorFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowInvestorFormServlet</servlet-name>
+		<url-pattern>/console/showinvestform.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>OFIInvestorEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorEditServlet</servlet-name>
+		<url-pattern>/console/updateinvestor.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestorXBGServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorXBGServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorXBGServlet</servlet-name>
+		<url-pattern>/console/updateinvestorbg.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestorXRelatedServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorXRelatedServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorXRelatedServlet</servlet-name>
+		<url-pattern>/console/updateinvestorrelated.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowNotFilledListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowNotFilledListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowNotFilledListServlet</servlet-name>
+		<url-pattern>/console/listnotfilled.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowReInvestFormServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIShowReInvestFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowReInvestFormServlet</servlet-name>
+		<url-pattern>/console/showreinvest.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIReInvestEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIReInvestEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIReInvestEditServlet</servlet-name>
+		<url-pattern>/console/editreinvest.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIInvestXManageScoreEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestXManageScoreEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestXManageScoreEditServlet</servlet-name>
+		<url-pattern>/console/cnfdi/updatemscore.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIMScoreExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIMScoreExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIMScoreExcelServlet</servlet-name>
+		<url-pattern>/cnfdi/getmscorexls.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIAllDataExcelServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIAllDataExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIAllDataExcelServlet</servlet-name>
+		<url-pattern>/cnfdi/getalldata.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIListOfficeServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIListOfficeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIListOfficeServlet</servlet-name>
+		<url-pattern>/cnfdi/showofficelist.jsp</url-pattern>
+	
+	</servlet-mapping>
+	
+	
+	<!-- Reject Start-->
+	<servlet>
+		<servlet-name>OFIListRejectServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIListRejectServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIListRejectServlet</servlet-name>
+		<url-pattern>/reject/showlist.jsp</url-pattern>
+		<url-pattern>/console/reject/showlist.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIRejectSummeryServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIRejectSummaryServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIRejectSummeryServlet</servlet-name>
+		<url-pattern>/reject/showsummary.jsp</url-pattern>
+		<url-pattern>/console/reject/showsummary.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIRejectSummaryExcelServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIRejectSummaryExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIRejectSummaryExcelServlet</servlet-name>
+		<url-pattern>/downloadsummary.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIShowRejectFormServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIShowRejectFormServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIShowRejectFormServlet</servlet-name>
+		<url-pattern>/console/reject/showform.jsp</url-pattern>
+		<url-pattern>/reject/showform.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIRejectAddApplicantServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIRejectAddApplicantServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIRejectAddApplicantServlet</servlet-name>
+		<url-pattern>/console/reject/addapplicant.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIRejectEditServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIRejectEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIRejectEditServlet</servlet-name>
+		<url-pattern>/console/reject/editreject.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>OFIRejectDeleteServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.OFIRejectDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIRejectDeleteServlet</servlet-name>
+		<url-pattern>/console/reject/rejectdelete.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetCNoByCNameServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.GetCNoByCNameServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCNoByCNameServlet</servlet-name>
+		<url-pattern>/console/reject/checkcname.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>GetCNoXSernoServlet</servlet-name>
+		<servlet-class>com.isam.ofi.reject.servlet.GetCNoXSernoServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCNoXSernoServlet</servlet-name>
+		<url-pattern>/console/reject/getcnoxserno.jsp</url-pattern>
+	</servlet-mapping>
+	
+	
+<!-- ======================================================================== -->
+<!-- 財務資料下載 -->
+<!-- ======================================================================== -->
+	<servlet>
+		<servlet-name>NTBTDatasUpload</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFINTBTDatasServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NTBTDatasUpload</servlet-name>
+		<url-pattern>/console/cnfdi/NTBTDatas.view</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>NTBTDataFileload</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFINTBTDatasLoadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NTBTDataFileload</servlet-name>
+		<url-pattern>/downloadNTBTDatas.view</url-pattern>
+	</servlet-mapping>	
+	
+<!-- ======================================================================== -->
+<!-- 發動Ajax -->
+<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>ajaxRequest</servlet-name>
+		<servlet-class>com.isam.helper.AjaxRequestServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ajaxRequest</servlet-name>
+		<url-pattern>/ajaxRequest.view</url-pattern>
+	</servlet-mapping>	
+<!-- ======================================================================== -->
+<!-- 陸資/國內事業管理(approvalfirm) 調整PDF -->
+<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>approvalfirmZIP</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestZIPServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>approvalfirmZIP</servlet-name>
+		<url-pattern>/console/cnfdi/OFIInvestZIP.view</url-pattern>
+	</servlet-mapping>	
+	
+	
+<!-- ======================================================================== -->
+<!-- 投資人管理-下載EXCEL -->
+<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>OFIInvestorExcel</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorExcelServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorExcel</servlet-name>
+		<url-pattern>/console/cnfdi/OFIInvestorExcel.view</url-pattern>
+	</servlet-mapping>
+	
+<!-- ======================================================================== -->
+<!-- 投資人、投資案 - 列表頁顯示file list -->
+<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>OFIInvestorXFileList</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIInvestorXFilelistServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIInvestorXFileList</servlet-name>
+		<url-pattern>/console/cnfdi/OFIInvestorXFileList.view</url-pattern>
+	</servlet-mapping>	
+<!-- ======================================================================== -->
+<!-- 後台-問卷管理 -->
+<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>SurveyFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyFileServlet</servlet-name>
+		<url-pattern>/console/survey/surveyFile.view</url-pattern>
+	</servlet-mapping>	
+	<servlet>
+		<servlet-name>SurveyFileUploadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyFileUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyFileUploadServlet</servlet-name>
+		<url-pattern>/console/survey/surveyFileUpload.view</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>FilledSurveyFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.FilledSurveyFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilledSurveyFileServlet</servlet-name>
+		<url-pattern>/console/survey/filledSurveyFile.view</url-pattern>
+	</servlet-mapping>	
+	<servlet>
+		<servlet-name>FilledSurveyFileUploadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.FilledSurveyFileUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilledSurveyFileUploadServlet</servlet-name>
+		<url-pattern>/console/survey/filledSurveyFileUpload.view</url-pattern>
+	</servlet-mapping>	
+	<servlet>
+		<servlet-name>FilledSurveyFileLoadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.FilledSurveyFileLoadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilledSurveyFileLoadServlet</servlet-name>
+		<url-pattern>/console/survey/filledSurveyFileLoad.view</url-pattern>
+		<url-pattern>/survey/filledSurveyFileLoad.view</url-pattern>
+	</servlet-mapping>	
+	
+		<servlet>
+		<servlet-name>FilledSurveyFileManagement</servlet-name>
+		<servlet-class>com.isam.servlet.FilledSurveyFileManagement</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FilledSurveyFileManagement</servlet-name>
+		<url-pattern>/console/survey/filledSurveyFile.management</url-pattern>
+			<url-pattern>/survey/filledSurveyFile.management</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>SurveyFileLoadServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyFileLoadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyFileLoadServlet</servlet-name>
+		<url-pattern>/console/survey/surveyFileLoad.view</url-pattern>
+	</servlet-mapping>	
+	
+	<servlet>
+		<servlet-name>SurveyFileManagement</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyFileManagement</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyFileManagement</servlet-name>
+		<url-pattern>/console/survey/surveyFile.management</url-pattern>
+			<url-pattern>/survey/surveyFile.management</url-pattern>
+	</servlet-mapping>	
+	
+	<!-- ======================================================================== -->
+	<!-- 後台-匯入陸資辦事處 -->
+	<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>OFIImportOfficeServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIImportOfficeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIImportOfficeServlet</servlet-name>
+		<url-pattern>/console/cnfdi/import_office.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<!-- ======================================================================== -->
+	<!-- 後台-營業項目管理 -->
+	<!-- ======================================================================== -->	
+	<servlet>
+		<servlet-name>OFIDownloadTWSICServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ofi.OFIDownloadTWSICServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OFIDownloadTWSICServlet</servlet-name>
+		<url-pattern>/console/cnfdi/download_twsic.view</url-pattern>
+	</servlet-mapping>
+			
+	<!-- Reject end-->
+
+	<!-- confirm project report start -->
+	<servlet>
+		<servlet-name>ProjectReportConfirmListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectReportConfirmListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectReportConfirmListServlet</servlet-name>
+		<url-pattern>/console/project/listrpconfirm.jsp</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ProjectReportConfirmEditServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectReportConfirmEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectReportConfirmEditServlet</servlet-name>
+		<url-pattern>/console/project/editprcomfirm.jsp</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ProjectReportDeleteCheckServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectReportDeleteCheckServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectReportDeleteCheckServlet</servlet-name>
+		<url-pattern>/console/project/checkprcomfirm.jsp</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>ProjectReportConfirmNoMatchServlet</servlet-name>
+		<servlet-class>com.isam.servlet.ProjectReportConfirmNoMatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProjectReportConfirmNoMatchServlet</servlet-name>
+		<url-pattern>/console/project/editnomatch.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>InterviewoneDownloadByCompanySearchServlet</servlet-name>
+		<servlet-class>com.isam.servlet.InterviewoneDownloadByCompanySearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>InterviewoneDownloadByCompanySearchServlet</servlet-name>
+		<url-pattern>/interviewone/downloadbycompanysearch.jsp</url-pattern>
+	</servlet-mapping>
+	<!-- confirm project report end -->
+
+
+	<!-- insert qNo 的 html 
+	<servlet>
+		<servlet-name>SurveyRunHTMLContentServlet</servlet-name>
+		<servlet-class>com.isam.servlet.SurveyRunHTMLContentServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>SurveyRunHTMLContentServlet</servlet-name>
+		<url-pattern>/survey/runhtml.jsp</url-pattern>
+	</servlet-mapping> -->
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>http://www.ibtech.idv.tw/functions</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/functions.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>

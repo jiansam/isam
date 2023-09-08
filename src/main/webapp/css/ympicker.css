@@ -1,0 +1,11 @@
+.ui-datepicker{
+	Font-size:15px !important;
+	padding: 0.2em 0.2em 0;
+}
+.ui-menu { 
+	width: 200px;
+	padding: 0.2em 0.2em 0; 
+}
+.select2-search-choice{
+ line-height:16px !important; 
+}

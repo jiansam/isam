@@ -1,0 +1,100 @@
+/***環境設定***/
+*{
+	hide-focus:expression(this.hideFocus=true);
+	font-family:LiHei Pro, 微軟正黑體, Microsoft JhengHei, 新細明體, PMingLiU, Verdana, Geneva, sans-serif;
+	color:#131313;
+	-webkit-text-size-adjust:none;	/***使得Google Chrome預設最小字體大小功能失效***/
+	font-size: 16px;
+}
+body {
+	background-repeat: repeat-x;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+li, li li, li li li { 
+	list-style-type: none; 
+} 
+input,button,select,textarea{outline:none}
+input[type=text],button,select,textarea{ color:#131313;border:1px solid #d0d0d5;margin:0;padding:1px;background:#fff;font-size:.916em; }
+/*add*/
+ul.tabs{
+	display: inline-block;
+	width: 100%;
+}
+ul.tabs li{
+	float:left;
+	
+	/* -webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	-webkit-box-shadow: 5px 0px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    5px 0px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         5px 0px 5px rgba(50, 50, 50, 0.75); 
+	
+	margin: 0px 3px;
+ 	padding:5px 10px;
+	border: 1px solid #999;
+	background-color: #6699cc; */
+}
+div{
+ padding: 3px;
+}
+div.textDiv {
+	overflow:auto;
+	height:200px;
+	/* border:1px solid #ACACAC; */
+	background-color: white;
+}
+.qTitle{
+	margin-top:10px;
+	margin-bottom:10px;
+	padding-left:5px;
+	font: 16px;
+	font-weight: bold;
+}
+.qTable {
+	vertical-align:middle;
+	padding-left:5px;
+	width: 95%;
+	margin:10px 5px;
+	/* text-align: center; */
+	border: 1px solid #ACACAC;
+}
+.trCompany{
+	font-weight:bold;
+	padding-left:5px;
+	min-height: 30px;
+	border-right: 1px solid #ACACAC;
+	border-bottom: 1px solid #ACACAC;
+	background-color: #CCCCFF;
+	white-space: nowrap;
+}
+.qSubject{
+	font-weight:bold;
+	padding-left:5px;
+	background-color: #9999CC;
+}
+.qTable .qCheck{
+	border:1px solid grey;
+	width: 15px;
+	height: 15px;
+	font-size: 12px;
+	text-align: center;
+	padding:2px 5px;
+	background-color: #ececec;
+}
+table tr td{
+	border:1px solid #ACACAC;
+}
+.qTable td{
+	border:0;
+}
+.qContent{
+	text-indent: 20px;
+}
+.qContent table{
+	text-indent: 0px;
+}
