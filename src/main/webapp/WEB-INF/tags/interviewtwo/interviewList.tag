@@ -24,7 +24,7 @@
 					<th>NO.</th>
 					<th>年度</th>
 					<th>訪查企業名稱</th>
-					<th>修改人</th>
+					<th>企業類別</th>
 					<th>修改時間</th>
 				</tr>
 			</thead>
