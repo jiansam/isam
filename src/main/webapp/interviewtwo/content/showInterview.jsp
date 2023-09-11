@@ -63,9 +63,9 @@ $(function() {
 					<tr>
 						<td class="colheader">企業類別</td>
 						<td>
-							<%=  (interviewbrief.getType1() == "1" ? "僑外資在臺事業<br>":"") %>
-							<%=  (interviewbrief.getType2() == "1" ? "台元科技園區<br>":"") %>
-							<%=  (interviewbrief.getType3() == "1" ? "陸資在臺辦事處":"") %>
+							<%=  "1".equals(interviewbrief.getType1()) ? "僑外資在臺事業<br>":"" %>
+							<%=  "1".equals(interviewbrief.getType1()) ? "台元科技園區<br>":"" %>
+							<%=  "1".equals(interviewbrief.getType1()) ? "陸資在臺辦事處":"" %>
 						</td>
 					</tr>
 					<tr>

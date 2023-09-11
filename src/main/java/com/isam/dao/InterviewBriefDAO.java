@@ -43,7 +43,10 @@ public class InterviewBriefDAO {
 				interviewbrief.setDescription(rs.getString("description"));
 				interviewbrief.setUpdateuser(rs.getString("updateuser"));
 				interviewbrief.setUpdatetime(rs.getDate("updatetime"));
-
+				interviewbrief.setType1(rs.getString("type1"));
+				interviewbrief.setType2(rs.getString("type2"));
+				interviewbrief.setType3(rs.getString("type3"));
+				
 				result.add(interviewbrief);
 			}
 
@@ -71,7 +74,7 @@ public class InterviewBriefDAO {
 
 		try{
 			forStmt.append("INSERT INTO InterviewBrief (year, company, description, createuser, createtime, updateuser, updatetime ,type1,type2,type3 ")
-						   .append(") VALUES (?, ?, ?, ?, GETDATE(), ?, GETDATE())");
+						   .append(") VALUES (?, ?, ?, ?, GETDATE(), ?, GETDATE(),?,?,?)");
 
 			stmt = sqltool.prepare(forStmt.toString());
 			stmt.setInt(1, interviewbrief.getYear());
