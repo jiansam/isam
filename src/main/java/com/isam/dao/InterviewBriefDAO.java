@@ -2,9 +2,9 @@ package com.isam.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
+import java.util.*;
 
-import com.isam.bean.InterviewBrief;
+import com.isam.bean.*;
 import com.isam.helper.SQL;
 
 public class InterviewBriefDAO {
@@ -73,8 +73,13 @@ public class InterviewBriefDAO {
 		int identifier = -1;
 
 		try{
+<<<<<<< HEAD
 			forStmt.append("INSERT INTO InterviewBrief (year, company, description, createuser, createtime, updateuser, updatetime ,type1,type2,type3 ")
 						   .append(") VALUES (?, ?, ?, ?, GETDATE(), ?, GETDATE(),?,?,?)");
+=======
+			forStmt.append("INSERT INTO InterviewBrief (year, company, description, createuser, createtime, updateuser, updatetime ")
+						   .append(") VALUES (?, ?, ?, ?, GETDATE(), ?, GETDATE())");
+>>>>>>> parent of 07f76a2 (新增 企業類別)
 
 			stmt = sqltool.prepare(forStmt.toString());
 			stmt.setInt(1, interviewbrief.getYear());
@@ -83,10 +88,6 @@ public class InterviewBriefDAO {
 			stmt.setNString(4, interviewbrief.getUpdateuser());
 			stmt.setNString(5, interviewbrief.getUpdateuser());
 
-			stmt.setNString(6, interviewbrief.getType1());
-			stmt.setNString(7, interviewbrief.getType2());
-			stmt.setNString(8, interviewbrief.getType3());
-			
 			stmt.executeUpdate();
 
 			ResultSet rs = sqltool.query("SELECT MAX(identifier) from InterviewBrief ");
@@ -119,9 +120,6 @@ public class InterviewBriefDAO {
 						   .append("company = ?, ")
 						   .append("description = ?, ")
 						   .append("updateuser = ?, ")
-						   .append("type1 = ?, ")
-						   .append("type2 = ?, ")
-						   .append("type3 = ?, ")
 						   .append("updatetime = GETDATE() ")
 						   .append("WHERE identifier = ? ");
 
@@ -130,12 +128,7 @@ public class InterviewBriefDAO {
 			stmt.setNString(2, interviewbrief.getCompany());
 			stmt.setNString(3, interviewbrief.getDescription());
 			stmt.setNString(4, interviewbrief.getUpdateuser());
-			
-			stmt.setNString(5, interviewbrief.getType1());
-			stmt.setNString(6, interviewbrief.getType2());
-			stmt.setNString(7, interviewbrief.getType3());
-			
-			stmt.setInt(8, interviewbrief.getIdentifier());
+			stmt.setInt(5, interviewbrief.getIdentifier());
 
 			stmt.executeUpdate();
 		}catch (Exception e) {

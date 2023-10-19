@@ -60,6 +60,7 @@ $(function() {
 						<td class="colheader" width="15%">訪查年度</td>
 						<td><%= interviewbrief.getYear() %></td>
 					</tr>
+<<<<<<< HEAD
 					<tr>
 						<td class="colheader">企業類別</td>
 						<td>
@@ -68,6 +69,9 @@ $(function() {
 							<%=  "1".equals(interviewbrief.getType1()) ? "陸資在臺辦事處":"" %>
 						</td>
 					</tr>
+=======
+					
+>>>>>>> parent of 07f76a2 (新增 企業類別)
 					<tr>
 						<td class="colheader">企業名稱</td>
 						<td><%= DataUtil.trim(interviewbrief.getCompany()) %></td>

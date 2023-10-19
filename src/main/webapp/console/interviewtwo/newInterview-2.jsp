@@ -6,12 +6,16 @@
 <%@ page import="java.util.*" %>
 <%
 	InterviewBrief interviewbrief = new InterviewBrief();
+<<<<<<< HEAD
  
 	interviewbrief.setType1( "1".equals(request.getParameter("type1")) ? "1":"0" );
 	interviewbrief.setType2( "1".equals(request.getParameter("type2")) ? "1":"0" );
 	interviewbrief.setType2( "1".equals(request.getParameter("type3")) ? "1":"0" );
 	
     interviewbrief.setYear(Integer.parseInt(request.getParameter("year")));
+=======
+	interviewbrief.setYear(Integer.parseInt(request.getParameter("year")));
+>>>>>>> parent of 07f76a2 (新增 企業類別)
 	interviewbrief.setCompany(DataUtil.trim(request.getParameter("company")));
 	interviewbrief.setDescription(DataUtil.trim(request.getParameter("description")));
 	

@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.sun.xml.messaging.saaj.packaging.mime.internet.MimeUtility;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
 
 public class DataUtil {
 	public static String trim(String inString){

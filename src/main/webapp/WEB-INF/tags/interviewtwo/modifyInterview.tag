@@ -33,6 +33,7 @@
 			</tr>
 			
 			<tr>
+<<<<<<< HEAD
 				<td class="colheader">※企業類別</td>
 				<td>
 					<input type="checkbox" name="type1" value="1" <%= "1".equals(interviewbrief.getType1()) ? "checked='checked'" :""%> >僑外資在臺事業 &nbsp;  
@@ -44,6 +45,8 @@
 				
 			 
 			<tr>
+=======
+>>>>>>> parent of 07f76a2 (新增 企業類別)
 				<td class="colheader">企業名稱</td>
 				<td><input type="text" name="company" size="100" value="<%= DataUtil.trim(interviewbrief.getCompany()) %>"></td>
 			</tr>
