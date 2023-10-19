@@ -8,7 +8,7 @@ public class ApprovalOption {
 	private String restrainType;
 	private int seq;
 	private int enable;
-	//test
+	
 	public String getType() {
 		return type;
 	}
