@@ -36,7 +36,6 @@ import com.isam.service.InterviewoneHelp;
 import com.isam.service.InterviewoneService;
 import com.isam.service.MoeaicDataService;
 
-import sun.nio.cs.ArrayEncoder;
 
 public class InterviewoneDownloadByYearServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -75,12 +74,13 @@ public class InterviewoneDownloadByYearServlet extends HttpServlet {
 	            return true;
 	        // UTF-8 only for now. Other ArrayDeocder only handles
 	        // CodingErrorAction.REPLACE mode.
+	        /*
 	        if (isUTF8 && ce instanceof ArrayEncoder) {
 	            int blen = ((ArrayEncoder)ce).encode(ca, 0, ca.length, ba);
 	            if (blen == -1)    // malformed
 	               return false;
 	            return true;
-	        }
+	        }*/
 	        return true;
 	}
 	@Override

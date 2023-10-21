@@ -32,21 +32,11 @@
 				<td><input type="text" name="year" size="100" value="<%= interviewbrief.getYear() %>"></td>
 			</tr>
 			
-			<tr>
-<<<<<<< HEAD
-				<td class="colheader">※企業類別</td>
-				<td>
-					<input type="checkbox" name="type1" value="1" <%= "1".equals(interviewbrief.getType1()) ? "checked='checked'" :""%> >僑外資在臺事業 &nbsp;  
-					<input type="checkbox" name="type2" value="1" <%= "1".equals(interviewbrief.getType2()) ? "checked='checked'" :""%> >台元科技園區 &nbsp;
-					<input type="checkbox" name="type3" value="1" <%= "1".equals(interviewbrief.getType3()) ? "checked='checked'" :""%> >陸資在臺辦事處
-				</td>
-			</tr>
-			
+		 
 				
 			 
 			<tr>
-=======
->>>>>>> parent of 07f76a2 (新增 企業類別)
+ 
 				<td class="colheader">企業名稱</td>
 				<td><input type="text" name="company" size="100" value="<%= DataUtil.trim(interviewbrief.getCompany()) %>"></td>
 			</tr>
