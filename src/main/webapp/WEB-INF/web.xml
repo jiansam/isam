@@ -583,13 +583,23 @@
 	
 	
 	<servlet>
+		<servlet-name>DownloadInterviewCierFileServlet</servlet-name>
+		<servlet-class>com.isam.servlet.DownloadInterviewCierFileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewCierFileServlet</servlet-name>
+		<url-pattern>/console/interviewcier/download.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewCierFileServlet</servlet-name>
+		<url-pattern>/interviewcier/download.jsp</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>DownloadInterviewFileServlet</servlet-name>
 		<servlet-class>com.isam.servlet.DownloadInterviewFileServlet</servlet-class>
 	</servlet>
-	<servlet-mapping>
-		<servlet-name>DownloadInterviewFileServlet</servlet-name>
-		<url-pattern>/console/interviewcier/download.jsp</url-pattern>
-	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>DownloadInterviewFileServlet</servlet-name>
@@ -600,7 +610,7 @@
 		<url-pattern>/interviewtwo/download.jsp</url-pattern>
 	</servlet-mapping>
 	
-	<!-- interviewtwo--> 
+	<!-- interviewtwo-->
 	<servlet>
 		<servlet-name>DownloadInterviewListServlet</servlet-name>
 		<servlet-class>com.isam.servlet.interviewtwo.DownloadInterviewListServlet</servlet-class>
@@ -610,6 +620,18 @@
 		<url-pattern>/console/interviewtwo/download-interviewlist.jsp</url-pattern>
 		<url-pattern>/interviewtwo/download-interviewlist.jsp</url-pattern>
 	</servlet-mapping>
+	
+	<!-- interviewCier-->
+	<servlet>
+		<servlet-name>DownloadInterviewCierListServlet</servlet-name>
+		<servlet-class>com.isam.servlet.interviewcier.DownloadInterviewListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DownloadInterviewCierListServlet</servlet-name>
+		<url-pattern>/console/interviewcier/download-interviewlist.jsp</url-pattern>
+		<url-pattern>/interviewcier/download-interviewlist.jsp</url-pattern>
+	</servlet-mapping>
+	
 	
 	<!-- interviewone--> 
 	<servlet>

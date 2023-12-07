@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="itag" tagdir="/WEB-INF/tags/interviewtwo" %>
+<%@ taglib prefix="itag" tagdir="/WEB-INF/tags/interviewcier" %>
 <%@ tag import="java.util.*" %>
 <%@ tag import="java.text.*" %>
 <%@ tag import="com.isam.bean.*" %>
@@ -13,16 +13,16 @@
 		identifier = Integer.parseInt(request.getParameter("identifier"));
 	}catch(Exception e){}
 	
-	ArrayList<InterviewBrief> interviewbriefs = InterviewBriefDAO.select(identifier);
+	ArrayList<InterviewCier> interviewbriefs = InterviewCierDAO.select(identifier);
 	if("new".equalsIgnoreCase(action)){
-		interviewbriefs.add(new InterviewBrief());
+		interviewbriefs.add(new InterviewCier());
 	}
 	
 	if(interviewbriefs.size() == 0){
 		return;
 	}
 	
-	InterviewBrief interviewbrief = interviewbriefs.get(0);
+	InterviewCier interviewbrief = interviewbriefs.get(0);
 %>
 <script type="text/javascript" src="<c:url value='/ckeditor/ckeditor.js'/>"></script>
 <script type="text/javascript" src="<c:url value='/ckeditor/config.js'/>"></script>
@@ -33,7 +33,15 @@
 			</tr>
 			
 		 
-				
+			<tr>
+				<td class="colheader">企業類別</td>
+				<td>
+					<input type="checkbox" name="type1" value="1" <%= "1".equals(interviewbrief.getType1()) ? "checked='checked'" :""%> >僑外資在臺事業 &nbsp;  
+					<input type="checkbox" name="type2" value="1" <%= "1".equals(interviewbrief.getType2()) ? "checked='checked'" :""%> >台元科技園區 &nbsp;
+					<input type="checkbox" name="type3" value="1" <%= "1".equals(interviewbrief.getType3()) ? "checked='checked'" :""%> >陸資在臺辦事處
+				</td>
+			</tr>
+			
 			 
 			<tr>
  

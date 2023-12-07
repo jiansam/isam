@@ -122,7 +122,7 @@ public class OFIShowApprovalListServlet extends HttpServlet {
 		terms.put("twsic", twsictmp);
 		for (Entry<String, String> m:terms.entrySet()) {
 //			System.out.println(m.getKey()+"="+m.getValue());
-			terms.put(m.getKey(), m.getValue().replaceAll("%", ""));
+			terms.put(m.getKey(), m.getValue() != null ? m.getValue().replaceAll("%", "") :m.getValue());
 		}
 		
 		session.setAttribute("iyearlist", yearlist);

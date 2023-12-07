@@ -21,6 +21,7 @@ input[type=text],button,select,textarea{ color:#131313;border:1px solid #d0d0d5;
 /***細部設定***/
 #welcome{
 	background-image: url(../images/isamBG.jpg);
+	background-size:contain;
 	margin:0 auto;
 	width:1050px;
 	height:600px;

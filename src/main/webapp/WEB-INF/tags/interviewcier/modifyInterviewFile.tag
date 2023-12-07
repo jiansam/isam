@@ -1,6 +1,6 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="itag" tagdir="/WEB-INF/tags/interviewtwo" %>
+<%@ taglib prefix="itag" tagdir="/WEB-INF/tags/interviewcier" %>
 <%@ tag import="java.util.*" %>
 <%@ tag import="java.text.*" %>
 <%@ tag import="com.isam.bean.*" %>

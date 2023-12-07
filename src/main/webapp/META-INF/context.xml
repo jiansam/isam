@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
+<!-- 測試 
 	<Resource name="jdbc/sqlISAM" auth="Container" type="javax.sql.DataSource"
 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" username="sa"
 		password="isam.27356006" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
@@ -12,16 +13,20 @@
 		url="jdbc:sqlserver://125.227.190.178:1433;DatabaseName=moeaic;SelectMethod=cursor"
 		maxWait="-1" maxActive="100" maxIdle="100" validationInterval="30000" testOnBorrow="true"
 		validationQuery="SELECT 1" jdbcInterceptors="StatementFinalizer" />
-<!-- 	<Resource name="jdbc/sqlCIER" auth="Container" type="javax.sql.DataSource" -->
-<!-- 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" username="sa" -->
-<!-- 		password="Ibtech.9548" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
-<!-- 		url="jdbc:sqlserver://localhost:1433;DatabaseName=ISAM;SelectMethod=cursor" -->
-<!-- 		maxWait="-1" maxActive="100" maxIdle="100" -->
-<!-- 		validationQuery="SELECT 1" /> -->
-<!-- 	<Resource name="jdbc/sqlMoeaic" auth="Container" type="javax.sql.DataSource" -->
-<!-- 		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" username="sa" -->
-<!-- 		password="Ibtech.9548" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" -->
-<!-- 		url="jdbc:sqlserver://localhost:1433;DatabaseName=moeaic;SelectMethod=cursor" -->
-<!-- 		maxWait="-1" maxActive="100" maxIdle="100" validationInterval="30000" testOnBorrow="true" -->
-<!-- 		validationQuery="SELECT 1" jdbcInterceptors="StatementFinalizer" />		 -->
+		-->
+	<!-- 正式 -->	 
+	<Resource name="jdbc/sqlCIER" auth="Container" type="javax.sql.DataSource"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" username="sa"
+		password="Ibtech.9548" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		url="jdbc:sqlserver://localhost:1433;DatabaseName=ISAM;SelectMethod=cursor"
+		maxWait="-1" maxActive="100" maxIdle="100"
+		validationQuery="SELECT 1" />
+	<Resource name="jdbc/sqlMoeaic" auth="Container" type="javax.sql.DataSource"
+		factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" username="sa"
+		password="Ibtech.9548" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+		url="jdbc:sqlserver://localhost:1433;DatabaseName=moeaic;SelectMethod=cursor"
+		maxWait="-1" maxActive="100" maxIdle="100" validationInterval="30000" testOnBorrow="true"
+		validationQuery="SELECT 1" jdbcInterceptors="StatementFinalizer" />		
+		
+		
 </Context>

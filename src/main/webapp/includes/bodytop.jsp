@@ -75,7 +75,7 @@
 				  	<a class="nextHref">訪查資料</a>
 				    <ul>
 					  <c:if test="${fn:contains(memberUrls,'R0301')}">
-				      	<li><a href="<c:url value="/interviewcier/interviewterms.jsp"/>">其他實地訪查</a></li>
+				      	<li><a href="<c:url value="/interviewcier/listInterview.jsp"/>">其他實地訪查</a></li>
 					  </c:if>
 					  <c:if test="${fn:contains(memberUrls,'R0302')}">
 				      	<li><a href="<c:url value="/interviewtwo/listInterview.jsp"/>">大陸投資實地訪查</a></li>
