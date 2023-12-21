@@ -13,9 +13,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
+import javax.mail.internet.MimeUtility;
 import javax.servlet.http.HttpServletRequest;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
 
 public class DataUtil {
 	public static String trim(String inString){
@@ -441,7 +441,8 @@ public class DataUtil {
 		  }
 		  // Chrome
 		  else if(userAgent.indexOf("Chrome")!=-1){
-		    encodedFileName = MimeUtility.encodeWord(fileName, "utf-8", "Q");
+		    //encodedFileName = MimeUtility.encodeWord(fileName, "utf-8", "Q");
+			  encodedFileName = MimeUtility.encodeWord(fileName, "utf-8", "Q");
 		  }else{
 			  encodedFileName = URLEncoder.encode(fileName, "utf-8");
 		  }

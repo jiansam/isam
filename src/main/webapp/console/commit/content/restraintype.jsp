@@ -122,20 +122,27 @@ $(function(){
 							<input type="hidden" name="sernoStr" value="${info.serno}"/>
 						</span>
 						<br/>
-						<span class="basetable" style="vertical-align: top;">
-						 涉及機關：
-						 	<input type='checkbox' value='010501' name='institution' id='I010501' /><label for='I010501'>勞動部</label>
+						<table style="text-align:left; font-size: 16px;font-weight:normal;" >
+						<tr>
+							<td style="width: 80px;padding-left:8px;">涉及機關：</td>
+							<td>
+							<input type='checkbox' value='010501' name='institution' id='I010501' /><label for='I010501'>勞動部</label>
 							<input type='checkbox' value='010502' name='institution' id='I010502' /><label for='I010502'>陸委會</label>
 							<input type='checkbox' value='010503' name='institution' id='I010503' /><label for='I010503'>金管會</label>
 							<input type='checkbox' value='010504' name='institution' id='I010504' /><label for='I010504'>環保署</label>
 							<input type='checkbox' value='010505' name='institution' id='I010505' /><label for='I010505'>央行</label>
-							<input type='checkbox' value='010506' name='institution' id='I010506' /><label for='I010506'>工業局</label>
-							<input type='checkbox' value='010507' name='institution' id='I010507' /><label for='I010507'>技術處</label>
-							<input type='checkbox' value='010508' name='institution' id='I010508' /><label for='I010508'>商業司</label>
+							<input type='checkbox' value='010506' name='institution' id='I010506' /><label for='I010506'>經濟部產業發展署</label>
+							<input type='checkbox' value='010507' name='institution' id='I010507' /><label for='I010507'>經濟部產業技術司</label>
+							<input type='checkbox' value='010508' name='institution' id='I010508' /><label for='I010508'>經濟部商業發展署</label>
 							<input type='checkbox' value='010509' name='institution' id='I010509' /><label for='I010509'>經建會</label>
-							<input type='checkbox' value='010510' name='institution' id='I010510' /><label for='I010510'>農委會</label>
+							<input type='checkbox' value='010510' name='institution' id='I010510' /><label for='I010510'>農業部</label>
 							<input type='checkbox' value='010511' name='institution' id='I010511' /><label for='I010511'>內政部</label>
-							<input type='checkbox' value='010512' name='institution' id='I010512' /><label for='I010512'>其他</label>
+							<input type='checkbox' value='010512' name='institution' id='I010512' /><label for='I010512'>其他</label></td>
+						</tr>
+						
+						</table>		
+						 
+
 						</span><br/>
 						<span class="basetable">
 						說明：<textarea name="notes" style="width: 88%;vertical-align: top;" rows="6" cols="150">${bean.note}</textarea>

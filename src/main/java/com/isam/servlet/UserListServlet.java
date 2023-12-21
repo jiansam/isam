@@ -22,8 +22,8 @@ public class UserListServlet extends HttpServlet{
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		companyMap = new HashMap<String, String>();
-		companyMap.put("ibtech", "鐵橋數位科技");
-		companyMap.put("moea", "投資審議委員會");
+		companyMap.put("ibtech", "資訊公司");
+		companyMap.put("moea", "投資審議司");
 		companyMap.put("cier", "中華經濟研究院");
 	}
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -107,7 +107,7 @@ $(function() {
 </legend>
 		
 <div>
-<span style="color: blue;">當發生介接異常時，請聯繫中華經濟研究院林佳慧 (02-27356006 分機 232 / wjing@cier.edu.tw)</span><br /><br />
+<span style="color: blue;">當發生介接異常時，請聯繫系統工程師</span><br /><br />
 <table id="update_status_table" class="display" style="width: 98%;">
 	<thead>
 		<tr>

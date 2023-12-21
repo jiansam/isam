@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div style="display: none;" id="editRange">
 	<div style="font-size: 14px;text-align: right;margin-bottom: 5px;">
-		<input type="button" class="btn_class_opener" value="一組預設" onclick="setTeamOne();">
-		<input type="button" class="btn_class_opener" value="二組預設" onclick="setTeamTwo();">
-		<input type="button" class="btn_class_opener" value="四組預設" onclick="setTeamFour();">
+		<input type="button" class="btn_class_opener" value="一科預設" onclick="setTeamOne();">
+		<input type="button" class="btn_class_opener" value="二科預設" onclick="setTeamTwo();">
+		<input type="button" class="btn_class_opener" value="四科預設" onclick="setTeamFour();">
 		<input type="button" class="btn_class_opener" value="清空" onclick="clearAuthority();">
 	</div>
 	<table class="datatableApproval">

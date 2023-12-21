@@ -66,9 +66,9 @@ $(function(){
 							<td class="tdRight">單位：</td>
 							<td class="tdLeft">
 								<select name="company" style="width: 190px;">
-									<option value="moea">投資審議委員會</option>
+									<option value="moea">投資審議司</option>
 									<option value="cier">中華經濟研究院</option>
-									<option value="ibtech">鐵橋數位科技</option>
+									<option value="ibtech">資訊公司</option>
 								</select>
 								<span class="errorMsg">${errors.emptycompany}</span>
 							</td>

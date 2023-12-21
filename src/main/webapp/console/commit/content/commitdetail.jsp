@@ -220,7 +220,7 @@ function setOfficeChecked(checkStr,name){
 										</span><br/>
 							        	<span style="margin-left: 25px;margin-bottom: 5px;">
 											<input type="checkbox" value="0505" class="parentCheck" id="restrainType0505"/><label for="restrainType0505">經補助之技術列管</label>&nbsp;
-											（<input type="checkbox" name="restrainType" value="050501" id="restrainType050501" class="childCheck"/><label for="restrainType050501">工業局</label>&nbsp;<input type="checkbox" name="restrainType" value="050502" id="restrainType050502" class="childCheck"/><label for="restrainType050502">技術處</label>&nbsp;<input type="checkbox" name="restrainType" value="050503" id="restrainType050503" class="childCheck"/><label for="restrainType050503">國科會</label>&nbsp;）
+											（<input type="checkbox" name="restrainType" value="050501" id="restrainType050501" class="childCheck"/><label for="restrainType050501">經濟部產業發展署</label>&nbsp;<input type="checkbox" name="restrainType" value="050502" id="restrainType050502" class="childCheck"/><label for="restrainType050502">經濟部產業技術司</label>&nbsp;<input type="checkbox" name="restrainType" value="050503" id="restrainType050503" class="childCheck"/><label for="restrainType050503">國科會</label>&nbsp;）
 										</span><br/>
 							        	<span style="margin-left: 25px;margin-bottom: 5px;">
 											<input type="checkbox" name="restrainType" value="0506" id="restrainType0506"/><label for="restrainType0506">請託關說／檢舉陳情</label>&nbsp;
