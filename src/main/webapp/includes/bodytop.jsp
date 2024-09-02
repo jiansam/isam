@@ -179,6 +179,6 @@
 		</div>
 		<div style="clear: both;"></div>
 	</div>
-	<div  class="ui-widget-header" style="height: 100px;"></div>
+	<div  class="ui-widget-header" style="height: 100px;background-color: #6699CC;"></div>
 </div>
 <jsp:include page="/includes/navigation.jsp" flush="true" />

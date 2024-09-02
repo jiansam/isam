@@ -51,8 +51,8 @@ $(function() {
 	});
 	function toEditContact($item){
 		var serno =$item.prop("id").replace("edit","");
-		var name =$item.parents("tr").find("td :eq(1)").text();
-		var telNo =$item.parents("tr").find("td :eq(2)").text();
+		var name =$item.prop("userName");
+		var telNo =$item.prop("telNo");
 			$.post( "${pageContext.request.contextPath}/console/cnfdi/content/newcontact.jsp",{
 					'type':'edit','investNo':"${sysinfo.INVESTMENT_NO}","name":name,'telNo':telNo,'serno':serno
 				}, function(data){
@@ -114,8 +114,8 @@ $(function() {
 				<td></td>
 				<td>${item.name}</td>
 				<td>${item.telNo}</td>
-				<td><c:if test="${fn:contains(memberUrls,'E0401')}"><input type="button" class="cDel btn_class_opener" id="delete${item.serno}" value="刪除"></c:if></td>
-				<td><c:if test="${fn:contains(memberUrls,'E0401')}"><input type="button" class="cEdit btn_class_opener" id="edit${item.serno}" value="編輯"></c:if></td>
+				<td><c:if test="${fn:contains(memberUrls,'E0401')}"><input type="button"  class="cDel btn_class_opener" id="delete${item.serno}" value="刪除"></c:if></td>
+				<td><c:if test="${fn:contains(memberUrls,'E0401')}"><input type="button"  userName="${item.name}" telNo="${item.telNo}" class="cEdit btn_class_opener" id="edit${item.serno}" value="編輯"></c:if></td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -11,7 +11,9 @@
 <title>歡迎使用投資調查與管理資料庫</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/css/webStyle.css'/>" />
 <jsp:include page="/includes/jQueryInculdes.jsp" flush="true" />
+<!--
 <link href="<c:url value='/css/start/jquery-ui-1.10.3.custom.min.css' />" rel="stylesheet" type="text/css" />
+-->
 <script type="text/javascript" src="<c:url value='/js/isam.js'/>"></script>
 <script>
 	$(function() {
